@@ -1,0 +1,20 @@
+{
+  "name": "html2html",
+  "version": "1.0.0",
+  "description": "page copy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyunjiang/html2html.git"
+  },
+  "keywords": [],
+  "author": "heyunjiang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heyunjiang/html2html/issues"
+  },
+  "homepage": "https://github.com/heyunjiang/html2html#readme"
+}
