@@ -47,6 +47,7 @@ class DomCloner {
     const links = this.documentElement.getElementsByTagName('link')
     const arrLinks = [...links].filter(node => (node.getAttribute('rel') === 'stylesheet' || node.getAttribute('type') === 'text/css'))
     return new Promise(resolve => {
+      if (!arrLinks.length) { resolve() }
       let resolvers = 0
       const reg = new RegExp(`^(http:|https:)?\/\/${location.host}`)
       arrLinks.forEach(async node => {
@@ -95,11 +96,13 @@ class DomCloner {
   fixUrl(doms) {
     if (doms instanceof HTMLCollection) {
       const protocol = location.protocol
+      const origin = location.origin
       doms = [...doms]
       doms.forEach(node => {
         const attrType = node.hasAttribute('href') ? 'href' : 'src'
         const value = node.getAttribute(attrType)
         if (/^(\/\/)/.test(value)) { node.setAttribute(attrType, protocol + value) }
+        if (/^\/(?!\/)/.test(value)) { node.setAttribute(attrType, origin + value) }
       })
     }
   }
